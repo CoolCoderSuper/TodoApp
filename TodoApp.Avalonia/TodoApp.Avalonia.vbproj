@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>TodoApp.Avalonia</RootNamespace>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.5" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.5" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5" />
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.5" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\TodoApp.Core\TodoApp.Core.vbproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:core="clr-namespace:TodoApp.Core;assembly=TodoApp.Core"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="500"
+        x:Class="TodoApp.Avalonia.MainWindow"
+        Title="TodoApp"
+		WindowState="Maximized"
+		Width="700" Height="500">
+	<Window.DataContext>
+		<core:MainPresenter/>
+	</Window.DataContext>
+	<Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto,*,Auto">
+		<TextBox Grid.Row="0" Grid.Column="0" Text="{Binding TodoContent}"/>
+		<Label Grid.Row="1" Grid.Column="0" Name="Error" Foreground="Red"/>
+		<Button Grid.Row="0" Grid.Column="1" Content="Remove" Command="{Binding Delete}"/>
+		<Button Grid.Row="0" Grid.Column="2" Content="New" Command="{Binding Create}"/>
+		<ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding TodoList}" SelectedItem="{Binding SelectedTodo}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Content}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Content="Save" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Command="{Binding Save}"/>
+	</Grid>
+</Window>
